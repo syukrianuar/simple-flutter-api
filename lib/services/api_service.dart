@@ -4,28 +4,32 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
   // final baseUrl = 'https://jsonplaceholder.typicode.com';
+  
+  //API endpoint/url 
   final baseUrl = 'https://dummyjson.com';
 
+  //GET API of all products using Future class
   Future fetchProducts() async {
+    //declare and initialize endpoint + route
     final endpointProducts = Uri.parse('$baseUrl/products');
 
+    //declare and initialize get response with the declared endpoint
     final response = await http.get(endpointProducts);
 
-    // print(response.statusCode);
-    // print(response.body);
-
+    //convert JSON encoded string body into appropriate data type
     final bodyResponse = json.decode(response.body)['products'];
+
     print(bodyResponse);
+
+    //ends the current function and return value with the decoded response data 
     return bodyResponse;
   }
 
+  //GET API using Future class
   Future fetchSingleProduct(String id) async {
     final endpointSingleProduct = Uri.parse('$baseUrl/products/$id');
 
     final response = await http.get(endpointSingleProduct);
-
-    // print(response.statusCode);
-    // print(response.body);
 
     final bodyResponse = json.decode(response.body);
     print(bodyResponse);
@@ -37,8 +41,6 @@ class ApiService {
 
     final response = await http.get(endpointCategories);
 
-    // print(response.statusCode);
-    // print(response.body);
 
     final bodyResponse = json.decode(response.body);
     print(response.statusCode);
@@ -52,8 +54,6 @@ class ApiService {
 
     final response = await http.get(endpointSingleCategory);
 
-    // print(response.statusCode);
-    // print(response.body);
 
     final bodyResponse = json.decode(response.body)['products'];
     print(response.statusCode);
