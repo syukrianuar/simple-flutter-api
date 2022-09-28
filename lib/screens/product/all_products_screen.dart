@@ -27,6 +27,7 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            //create builder based on latest
             FutureBuilder(
                 future: futureFetchProducts,
                 builder: ((context, AsyncSnapshot snapshot) {
